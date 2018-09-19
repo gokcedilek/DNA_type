@@ -9,7 +9,7 @@ public class DNA{
     private static final String END_CODON_2= "TAG";
     private static final String END_CODON_3= "TGA";
     private String sequence;
-    private String junkremoved;
+    private String junkRemoved;
 
     public DNA (String sequence){
         this.sequence=sequence;
@@ -21,16 +21,16 @@ public class DNA{
         return startCorrect()&& endCorrect()&&massCorrect()&&codonCountCorrect();
     }
     public boolean startCorrect(){
-        return junkremoved.substring(0,CODON_LENGTH).equals(START_CODON);
+        return junkRemoved.substring(0,CODON_LENGTH).equals(START_CODON);
     }
     public boolean endCorrect(){
-        return (junkremoved.substring(junkremoved.length()-CODON_LENGTH, junkremoved.length()).equals(END_CODON_1 ) )
-                || (junkremoved.substring(junkremoved.length()-CODON_LENGTH, junkremoved.length()).equals(END_CODON_2 )
-                || (junkremoved.substring(junkremoved.length()-CODON_LENGTH, junkremoved.length()).equals(END_CODON_3)));
+        return (junkRemoved.substring(junkRemoved.length()-CODON_LENGTH, junkRemoved.length()).equals(END_CODON_1 ) )
+                || (junkRemoved.substring(junkRemoved.length()-CODON_LENGTH, junkRemoved.length()).equals(END_CODON_2 )
+                || (junkRemoved.substring(junkRemoved.length()-CODON_LENGTH, junkRemoved.length()).equals(END_CODON_3)));
     }
     public boolean isValid(){
         removeJunk();
-        return junkremoved.length()%3==0 && !sequence.equals("") && sequence.length()!=0;
+        return junkRemoved.length()%3==0 && !sequence.equals("") && sequence.length()!=0;
     }
     public void removeJunk(){
         StringBuilder sequence_builder= new StringBuilder(sequence);
@@ -44,7 +44,7 @@ public class DNA{
                 i++;
             }
         }
-        junkremoved= sequence_builder.toString();
+        junkRemoved = sequence_builder.toString();
     }
     public boolean massCorrect(){
         int num_c= nucleotideCount('C');
@@ -56,7 +56,7 @@ public class DNA{
         return false;
     }
     public boolean codonCountCorrect(){
-        return junkremoved.length()/3 >=5;
+        return junkRemoved.length()/3 >=5;
     }
     public double totalMass(){
         double mass=0;
