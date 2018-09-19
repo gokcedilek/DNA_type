@@ -20,10 +20,10 @@ public class PublicTests {
         assertTrue(dna2.isProtein());
     }
 
-//    @Test(expected=IllegalArgumentException.class)
-//    public void test3_create_invalidSeq() {
-//        DNA dna3 = new DNA("-TA");
-//    }
+    @Test(expected=IllegalArgumentException.class)
+    public void test3_create_invalidSeq() {
+        DNA dna3 = new DNA("-TA");
+    }
 
     @Test
     public void test4_nucleotideCount() {
